@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="blog.model.Category" table="CATEGORY">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <!-- 和博文一对多 -->
+        <set name="articles" inverse="true">
+        	<key column="CATEGORYID"></key>
+        	<one-to-many class="blog.model.Article"/>
+        </set>
+    </class>
+</hibernate-mapping>

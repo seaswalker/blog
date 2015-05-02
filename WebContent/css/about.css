@@ -1,0 +1,24 @@
+/*关于页面的右侧*/
+.about-right {
+    width: 720px;
+    height: 1000px;
+    float: left;
+    padding-top: 30px;
+    border-left: 1px #303437 dashed;
+}
+.about-title {
+    font-size: 20px;
+    margin-left: 20px;
+}
+/*正文*/
+.about-content {
+    margin-left: 20px;
+    margin-right: 20px;
+    text-indent: 2em;
+    line-height: 1.5em;
+    font-size: 16px;
+}
+/*去掉段落之间的空行*/
+p {
+    margin: 0px;
+}

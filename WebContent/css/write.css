@@ -1,0 +1,37 @@
+/*主体部分*/
+.main {
+    width: 980px;
+    height: 600px;
+    margin: 0px auto 0px;
+    padding-top: 10px;
+}
+body {
+    background-color: #EEF2FB;
+}
+.write-tips {
+    font-size: 20px;
+    margin-left: 20px;
+}
+.write-title {
+    margin-left: 90px;
+    margin-top: 10px;
+}
+.write-editor {
+    width: 800px;
+    margin: 10px auto 0px;
+}
+/*类别选择*/
+.write-category {
+    margin-left: 90px;
+    margin-top: 20px;
+}
+/*标签*/
+.write-tags {
+    margin-left: 90px;
+    margin-top: 10px;
+}
+/*按钮*/
+.write-button {
+   margin-top: 20px;
+    text-align: center;
+}

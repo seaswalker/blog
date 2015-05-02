@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="blog.model.Reply" table="REPLY">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="headpath" type="java.lang.String">
+            <column name="HEADPATH" />
+        </property>
+        <property name="nickname" type="java.lang.String">
+            <column name="NICKNAME" not-null="true"/>
+        </property>
+        <property name="email" type="string">
+        	<column name="EMAIL" not-null="true" length="50"></column>
+        </property>
+        <property name="homepage" type="string">
+        	<column name="HOMEPAGE"></column>
+        </property>
+        <property name="content" type="java.lang.String">
+            <column name="CONTENT" not-null="true"/>
+        </property>
+        <property name="replytime" type="timestamp">
+        	<column name="REPLYTIME" not-null="true"></column>
+        </property>
+        <many-to-one name="article" class="blog.model.Article" fetch="join" >
+            <column name="ARTICLEID" />
+        </many-to-one>
+        <!-- 和自己多对一 -->
+        <many-to-one name="parent" column="PARENTID"></many-to-one>
+        <!-- 和子回复一对多， 级联删除 -->
+        <set name="children" inverse="true" cascade="delete">
+        	<key column="PARENTID"></key>
+        	<one-to-many class="blog.model.Reply"/>
+        </set>
+        <!-- 和留言多对一 -->
+        <many-to-one name="message" class="blog.model.Message" fetch="join">
+            <column name="MESSAGEID" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

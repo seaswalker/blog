@@ -1,0 +1,35 @@
+body {
+    background-color: #3D3D3D;
+}
+/*主窗口*/
+.main {
+    width: 400px;
+    height: 300px;
+    background-image: url(../images/login.png);
+    margin: 150px auto 0px;
+}
+/*用户名输入框*/
+.inputusername {
+    margin-top: 96px;
+    height: 20px;
+    margin-left: 90px;
+}
+/*密码输入框*/
+.inputpassword {
+    height: 20px;
+    margin-top: 40px;
+    margin-left: 90px;
+}
+/*错误信显示*/
+.login-error {
+    margin-top: 10px;
+    font-size: 14px;
+    color: red;
+    margin-left: 90px;
+}
+/*按钮*/
+.btn {
+    width:  100px; 
+    margin-left: 50px;
+    margin-top: 30px;
+}

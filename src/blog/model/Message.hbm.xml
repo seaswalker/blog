@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="blog.model.Message" table="MESSAGE">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="content" type="java.lang.String">
+            <column name="CONTENT" />
+        </property>
+        <!-- 和回复一对多 -->
+        <set name="replies" inverse="true">
+        	<key column="MESSAGEID"></key>
+        	<one-to-many class="blog.model.Reply"/>
+        </set>
+    </class>
+</hibernate-mapping>

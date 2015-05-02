@@ -1,0 +1,144 @@
+/*主体部分*/
+.main {
+    width: 980px;
+    margin: 0 auto;
+    /*阴影效果*/
+    box-shadow: 0px 0px 15px #3c3c3c; 
+}
+/*左侧边框样式*/
+.left-border {
+    border-bottom: 1px #BCBCBC  solid;
+}
+/*左侧*/
+.main-left {
+    width: 250px;
+    float: left;
+    background-color: #EEEEEE;
+}
+/*搜索*/
+.left-search {
+    width: 250px;
+    height: 100px;
+    text-align: center;
+    padding: 1px;
+}
+.search {
+    margin-top: 30px;
+}
+/*左侧日期分类*/
+.left-date {
+    padding-top: 1px;
+    text-align: left;
+    padding-bottom: 10px;
+    
+}
+/*日历*/
+.left-calendar {
+	height: 250px;
+}
+.left-ul {
+    margin: 0;
+    padding: 0;
+    margin-left: 20px;
+    
+}
+.left-ul li {
+    list-style: none;
+    margin-bottom: 5px;
+}
+/*日期的连接*/
+.left-ul li a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #b16666;
+}
+/*左侧标题*/
+.left-title {
+    font-size: 18px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+/*右侧*/
+.main-right {
+    width: 719px;;
+    float: left;
+    margin-left: 10px;
+}
+.article-digest {
+    margin-top: 10px;
+    height:150px;
+    background-color: white;
+    box-shadow: 0px 0px 4px #3c3c3c;
+}
+/*文章标题*/
+.article-title {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+.article-title a {
+    font-size: 24px;
+    color: #303437;
+    text-decoration: none;
+}
+.article-date {
+    font-size: 12px;
+    color: #a7a7a7;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+.article-author {
+    font-size: 14px;
+    color:#b16666;
+}
+/*正文*/
+.article-content {
+    margin-left: 20px;
+    margin-top: 5px;
+    text-indent: 2em;
+}
+/*阅读全文*/
+.article-more {
+    font-size: 14px;
+    margin-left: 610px;
+    margin-top: 15px;
+}
+.article-more a {
+    color: red;
+    text-decoration: none;
+}
+/*标签*/
+.article-others {
+    font-size: 12px;
+    color:#b16666;
+    margin-left: 530px;
+    margin-top: 5px;
+}
+/*分页*/
+.left-page {
+    text-align: center;
+    background-color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0px 0px 4px #3c3c3c;
+}
+.left-page a {
+    text-decoration: none;
+    color: #b16666;
+    margin-left: 5px;
+}
+/*当前页*/
+.current {
+    color: red;
+    margin-left: 5px;
+}
+/*标签列表*/
+.left-tags {
+    width: 210px;
+    margin: 0 auto 10px;
+}
+.left-tags a {
+    font-size: 14px;
+    color: #b16666;
+    text-decoration: none;
+}

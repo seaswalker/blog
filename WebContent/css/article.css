@@ -1,0 +1,117 @@
+.article-right {
+    float: left;
+    width: 720px;
+    padding-top: 15px;
+    border-left: 1px #303437 dashed;
+}
+.article-title {
+    font-size: 30px;
+}
+/*博文正文*/
+.article-content {
+    margin-top: 20px;
+    margin-left: 20px;
+    text-indent: 2em;
+    line-height: 1.5;
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    box-shadow: 0px 0px 1px #3c3c3c;
+}
+/*去掉段落空行*/
+p{
+    margin: 0;
+}
+/*标签*/
+.article-tag {
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #b16666;
+}
+.article-tag a {
+    color: #b16666;
+    text-decoration: none;
+}
+.article-prenext a {
+    color: #b16666;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+    text-decoration: none;
+}
+.article-prenext {
+    color: #A7A7A7;
+    margin-left: 20px;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+/*评论区*/
+.article-comments {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+.comment-title {
+    font-size: 20px;
+}
+/*一条评论*/
+.comment {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+/*评论人头像*/
+.comment-avatar {
+    width: 24px;
+    height: 24px;
+    float: left;
+}
+/*评论人id*/
+.comment-id {
+    height: 16px;
+    font-size: 12px;
+    margin-top: 4px;
+    margin-left: 5px;
+    float: left;
+    color: #b16666;
+}
+/*回复时间*/
+.comment-time {
+    font-size: 12px;
+    margin-top: 5px;
+    color:#8d8d8d;
+    margin-left: 24px;
+}
+/*回复内容*/
+.comment-content {
+    margin-top: 10px;
+    padding-left:30px;
+    font-size: 15px;
+}
+/*回复按钮*/
+.comment-reply {
+    float: right;
+    margin-right: 10px;
+    font-size: 12px;
+    margin-top: 10px;
+    color: #b16666
+}
+/*回复标题*/
+.reply-title {
+    clear: both;
+    margin-top: 30px;
+    margin-left: 0px;
+}
+/*回复表单*/
+.reply-form {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+.reply-form table {
+    font-size: 14px;
+}
+/*发表评论错误信息*/
+.reply-error {
+	color: red;
+}

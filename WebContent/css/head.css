@@ -1,0 +1,121 @@
+/*主题宽度*/
+body {
+    margin: 0 auto;
+    padding: 0;
+}
+/*顶部深色背景*/
+.top {
+    background-color: #303437;
+    width: 100%;
+    height: 150px;
+    padding-top: 1px;
+}
+/*logo文字*/
+.logo-font {
+    font-size: 40px;
+    color: white;
+    display: block;
+    float: left;
+    margin-top: 12px;
+    margin-left: 10px;
+    letter-spacing: 4px;
+}
+/*顶部logo以及文字部分*/
+.image {
+    width: 980px;
+    margin: 20px auto 0px;
+    height: 100px;
+}
+.image img {
+    float: left;
+}
+/*底部文字*/
+.logo-bottom {
+    clear: both;
+    color: white;
+    font-size: 14px;
+    word-spacing: 2px;
+    letter-spacing: 2px;
+    margin-top: 5px;
+    float: right;
+}
+/*导航栏*/
+.navigator {
+    width: 980px;
+    margin: 0 auto;
+    height: 50px;
+}
+.navigator ul {
+    list-style: none;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+.navigator ul li {
+    float: left;
+    margin-right: 40px;
+}
+/*头部的超链接*/
+.head-link {
+    color: white;
+    text-decoration: none;
+}
+/*模态窗口*/
+.model-content {
+    display: none;
+	position: fixed;
+	top: 40%;
+	left: 50%;
+	width: 400px;
+	height: 300px;
+	margin-left:-200px;
+	margin-top: -150px;
+	border-radius: 5px;
+	background-color: white;
+	z-index: 1001;
+}
+/*模态内容的表格*/
+.table {
+    margin-top: 30px;
+    text-align: center;
+}
+.table-input {
+    width: 160px;
+    margin: 0;
+    padding: 0;
+}
+.table div {
+    margin-top: 10px;
+}
+td {
+    line-height: 30px;
+}
+/*遮盖层*/
+.model-shield {
+	display: none;
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 1000;
+	background-color: black;
+	/*透明度，标准*/
+	opacity: 0.5;
+	/*老版本火狐*/
+	-moz-opacity: 0.5;
+	/*IE9以下*/
+    filter: alpha(opacity=50);
+}
+/*登录窗口标题*/
+.content-title {
+	height: 30px;
+	background-color: #e2e2e2;
+	line-height: 30px;
+	padding-left: 5px;
+}
+/*登录错误*/
+.login-error {
+    font-size: 14px;
+    color: red;
+}
