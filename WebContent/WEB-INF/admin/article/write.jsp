@@ -12,13 +12,8 @@
 	<!--引入css-->
     <link rel="stylesheet" href="css/write.css">
     <script src="script/write.js"></script>
-    <!-- 引入Umeditor -->
- 	<link rel="stylesheet" href = "umeditor/themes/default/css/umeditor.min.css"/>
-    <!-- 配置文件 -->
-    <script src = "umeditor/third-party/jquery.min.js"></script>
-    <script src="umeditor/umeditor.config.js"></script>
-    <script src="umeditor/umeditor.min.js"></script>
-    <script src = "umeditor/lang/zh-cn/zh-cn.js"></script>
+ 	<script type="text/javascript" src="script/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>写博客</title>
 </head>
@@ -38,12 +33,9 @@
             </div>
            <!--富文本编辑器-->
            <div class="write-editor">
-               <script type="text/plain" id="myEditor" style="width:800px;height:300px;">
+               <textarea name="content" class="ckeditor" style="width:800px;height:300px;">
 					${article.content}
-               </script>
-               <script type = "text/javascript">
-                   editor = UM.getEditor("myEditor");
-               </script>
+               </textarea>
            </div>
            <!--选择类别-->
            <div class="write-category">
@@ -59,6 +51,12 @@
            <div class="write-tags">
                	标签(最多使用5个，以空格分开)：
                <input type="text" name="tags" value = "${article.tagsStr}">
+           </div>
+           <!-- 摘要 -->
+           <div class="write_summary">
+           		博文摘要:(默认将使用博文内容的前30字)
+           		<br><br>
+           		<textarea style="width:800px;height:100px;" name="summary"></textarea>
            </div>
            <!--发表博文-->
            <div class="write-button">

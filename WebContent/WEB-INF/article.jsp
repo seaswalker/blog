@@ -22,6 +22,11 @@
     <script src="script/ajax.js"></script>
     <script src="script/ListenerUtil.js"></script>
     <script src="script/reply.js"></script>
+    <!-- 代码高亮 -->
+    <link type="text/css" rel="stylesheet" href="syntaxhighlighter/styles/shCore.css"/>
+	<link type="text/css" rel="stylesheet" href="syntaxhighlighter/styles/shThemeDefault.css"/>
+	<script type="text/javascript" src="syntaxhighlighter/scripts/shCore.js"></script>
+	<script type="text/javascript" src="syntaxhighlighter/scripts/shBrushes.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<base href = "<%=basePath%>">
 	<title>博文浏览</title>
@@ -35,6 +40,8 @@
 			var aid = document.getElementById("aid").value;
 			getResponseData("reply/list.html?aid=" + aid, false, true, showComments);
 		}
+		SyntaxHighlighter.config.clipboardSwf = 'syntaxhighlighter/scripts/clipboard.swf';
+	    SyntaxHighlighter.all();
 	</script>
 </head>
 <body>

@@ -65,18 +65,20 @@ public class AdminArticleController {
 	
 	/**
 	 * 保存博客
+	 * @param summary 博文摘要，如果为空使用取出html标签后的前32个子
 	 */
 	@RequestMapping("save")
-	public String save(Integer id, String title, String editorValue, int categoryid, String tags) {
+	public String save(Integer id, String title, String content, String summary, int categoryid, String tags) {
 		Article article = new Article();
 		if(id != null) {
 			article.setId(id);
 		}
 		//转为纯为本
-		String text = HTMLUtil.HtmltoText(editorValue);
-		article.setDigest(StringUtil.subString(text, 32));
+		String digest = StringUtil.isEmpty(summary) ? StringUtil.subString(HTMLUtil.HtmltoText(content), 32)
+				: summary;
+		article.setDigest(digest);
 		article.setCategory(new Category(categoryid));
-		article.setContent(editorValue);
+		article.setContent(content);
 		article.setTitle(title);
 		DataUtil.convertTags(article, tags, tagService);
 		articleServcie.saveOrUpdate(article);
