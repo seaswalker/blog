@@ -9,8 +9,8 @@ function check() {
         return false;
     }
     //内容
-    var content = editor.getContent();
-	if(content.trim() == "") {
+    var content = CKEDITOR.instances.ckeditor.getData();
+	if(content == null || content.trim() == "") {
 		alert("请输入内容");
 		return false;
 	}

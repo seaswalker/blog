@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="ckeditor" uri="http://ckeditor.com" %>
+<%@taglib prefix="ckfinder" uri="http://cksource.com/ckfinder" %>
 <%    
 	String path = request.getContextPath();    
 	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";    
@@ -14,6 +16,7 @@
     <script src="script/write.js"></script>
  	<script type="text/javascript" src="script/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+	<script type="text/javascript" src="ckfinder/ckfinder.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>写博客</title>
 </head>
@@ -33,9 +36,11 @@
             </div>
            <!--富文本编辑器-->
            <div class="write-editor">
-               <textarea name="content" class="ckeditor" style="width:800px;height:300px;">
+           		<ckfinder:setupCKEditor editor="ckeditor" basePath="ckfinder/"/>
+               <textarea name="content" id="ckeditor" style="width:800px;height:300px;">
 					${article.content}
                </textarea>
+               <ckeditor:replace replace="ckeditor" basePath="ckeditor/"></ckeditor:replace>
            </div>
            <!--选择类别-->
            <div class="write-category">

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="ckeditor" uri="http://ckeditor.com" %>
+<%@taglib prefix="ckfinder" uri="http://cksource.com/ckfinder" %>
 <%    
 	String path = request.getContextPath();    
 	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";    
@@ -12,13 +14,9 @@
 	<!--引入css-->
     <link rel="stylesheet" href="css/write.css">
     <script src="script/write.js"></script>
-    <!-- 引入Umeditor -->
- 	<link rel="stylesheet" href = "umeditor/themes/default/css/umeditor.min.css"/>
-    <!-- 配置文件 -->
-    <script src = "umeditor/third-party/jquery.min.js"></script>
-    <script src="umeditor/umeditor.config.js"></script>
-    <script src="umeditor/umeditor.min.js"></script>
-    <script src = "umeditor/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript" src="script/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+	<script type="text/javascript" src="ckfinder/ckfinder.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>写博客</title>
 </head>
@@ -34,12 +32,11 @@
        	   <input type="hidden" name="id" value="${message.id}">
            <!--富文本编辑器-->
            <div class="write-editor">
-               <script type="text/plain" id="myEditor" style="width:800px;height:300px;">
+               <ckfinder:setupCKEditor editor="ckeditor" basePath="ckfinder/"/>
+               <textarea name="content" id="ckeditor" style="width:800px;height:300px;">
 					${message.content}
-               </script>
-               <script type = "text/javascript">
-                   editor = UM.getEditor("myEditor");
-               </script>
+               </textarea>
+               <ckeditor:replace replace="ckeditor" basePath="ckeditor/"></ckeditor:replace>
            </div>
            <!--发表博文-->
            <div class="write-button">
