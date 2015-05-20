@@ -76,3 +76,18 @@
 			ul.appendChild(li);
 		}
 	}
+	//加载天气预报
+	function weather(data) {
+		var span = document.getElementById("weather_report");
+		var json = eval("(" + data + ")");
+		if(json == null || json == undefined || json.error != 0) {
+			span.innerHTML = "加载失败，请检查您的网络连接";
+			return;
+		}
+		//要显示的天气数据
+		var result = "";
+		//今天的天气数据对象
+		var tody_weather = json.results[0].weather_data[0];
+		result += (json.results[0].currentCity + " " + tody_weather.date + "<br>" + tody_weather.weather + " " + tody_weather.wind + " " + tody_weather.temperature);
+		span.innerHTML = result;
+	}

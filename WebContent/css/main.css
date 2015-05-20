@@ -142,3 +142,14 @@
     color: #b16666;
     text-decoration: none;
 }
+/*天气*/
+.left-weather {
+	text-align: center;
+	height: 70px;
+}
+.weather_data {
+	font-size: 14px;
+	color: #b16666;
+	display: inline-block;
+	margin-top: 8px;
+} 

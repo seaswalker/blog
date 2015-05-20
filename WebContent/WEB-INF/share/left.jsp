@@ -18,6 +18,7 @@
 			getResponseData("ajax/cy.html", true, false, category);
 			getResponseData("ajax/tag.html", true, false, tag);
 			getResponseData("ajax/links.html", true, false, links);
+			getResponseData("weather.html", true, false, weather);
 		}
 	</script>
 </head>
@@ -68,6 +69,11 @@
                    $("idCalendarPre").onclick = function(){ cale.PreMonth(); } 
                    $("idCalendarNext").onclick = function(){ cale.NextMonth(); } 
                    </script>
+       </div>
+       <!-- 天气预报 -->
+       <div class="left-weather left-border">
+       		今日天气<br>
+       		<span class="weather_data" id="weather_report">正在加载...</span>
        </div>
        <!--按日期分类-->
        <div class="left-date left-border">
