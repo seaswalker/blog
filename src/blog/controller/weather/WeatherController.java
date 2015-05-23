@@ -121,7 +121,7 @@ public class WeatherController {
 	}
 	
 	/**
-	 * 从搜狐返回的数据中获取城市名称
+	 * 从返回的数据中获取城市名称
 	 */
 	private String extractCity(String city) {
 		//省
