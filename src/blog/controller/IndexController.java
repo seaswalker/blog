@@ -9,12 +9,15 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import blog.model.Article;
+import blog.model.page.LucencePageBean;
 import blog.model.page.PageBean;
 import blog.model.page.QueryResult;
 import blog.service.ArticleServcie;
 import blog.util.DataUtil;
+import blog.util.PropertyUtil;
 import blog.util.StringUtil;
 
 /**
@@ -23,16 +26,19 @@ import blog.util.StringUtil;
  *
  */
 @Controller
-@RequestMapping("/index")
 public class IndexController {
 	
 	@Resource(name = "articleService")
 	private ArticleServcie articleServcie;
+	/*
+	 * 搜索分页尺寸
+	 */
+	private static int pageSize = Integer.parseInt(PropertyUtil.getProperty("search.pageSize"));
 
-	@RequestMapping
-	public String index(Integer page, Integer date, Integer cy, Integer tag, String search, Model model) {
+	@RequestMapping("/index")
+	public String index(Integer page, Integer date, Integer cy, Integer tag, Model model) {
 		//获取分页的博文
-		int pageSize = 6;
+		int pageSize = Integer.parseInt(PropertyUtil.getProperty("index.pageSize"));
 		page = (!DataUtil.isValid(page)) ? 1 : page;
 		//按照发表时间倒序排列
 		HashMap<String, String> orderbys = new HashMap<String, String>();
@@ -52,11 +58,6 @@ public class IndexController {
 			//标签条件
 			sb.append(" and id in (select articleid from article_tag where tagid = ?)");
 			params.add(tag);
-		}else if(!StringUtil.isEmpty(search)) {
-			//搜索内容
-			sb.append(" and title like ?");
-			params.add("%" + search + "%");
-			//params.add("'%" + search + "%'");出错
 		}
 		QueryResult<Article> queryResult = articleServcie.getSrollData("article", sb.toString(), params, orderbys, page, pageSize);
 		PageBean<Article> pageBean = new PageBean<Article>(queryResult.getRecords(), pageSize, page, queryResult.getRecordCount());
@@ -66,8 +67,21 @@ public class IndexController {
 		model.addAttribute("date", date);
 		model.addAttribute("cy", cy);
 		model.addAttribute("tag", tag);
-		model.addAttribute("search", search);
 		return "index";
+	}
+	
+	/**
+	 * 博客搜索
+	 * @param pn 页码
+	 */
+	@RequestMapping("/search")
+	public String search(@RequestParam(value="pn", defaultValue="1") int pn, String search, Model model) throws Exception {
+		if(!StringUtil.isEmpty(search)) {
+			LucencePageBean<Article> pageBean = articleServcie.search(search, pn, pageSize);
+			model.addAttribute("search", search);
+			model.addAttribute("pageBean", pageBean);
+		}
+		return "search";
 	}
 	
 }

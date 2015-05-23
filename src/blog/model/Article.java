@@ -5,6 +5,15 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.lucene.document.DateTools;
+import org.apache.lucene.document.DateTools.Resolution;
+import org.apache.lucene.document.Document;
+import org.apache.lucene.document.Field;
+import org.apache.lucene.document.IntField;
+import org.apache.lucene.document.StringField;
+import org.apache.lucene.document.TextField;
+import org.apache.lucene.document.Field.Store;
+
 /**
  * 博客
  * @author skywalker
@@ -29,6 +38,43 @@ public class Article implements Serializable {
 	private String tagsStr;
 	//回复
 	private Set<Reply> replies;
+	
+	public Article(int id, String title, int replyCount, int clickCount,
+			Date createTime, String digest) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.replyCount = replyCount;
+		this.clickCount = clickCount;
+		this.createTime = createTime;
+		this.digest = digest;
+	}
+	
+	public Article() {}
+
+	/**
+	 * 拿到此篇博客的doc
+	 */
+	public Document getDocument() {
+		Document doc = new Document();
+		Field idField = new StringField("id", String.valueOf(this.id), Store.YES);
+		Field titleField = new TextField("title", this.title, Store.YES);
+		titleField.setBoost(2f);
+		Field digestField = new TextField("digest", this.digest, Store.YES);
+		digestField.setBoost(1f);
+		//日期字段
+		Field dateField = new StringField("date", DateTools.dateToString(createTime, Resolution.DAY), Store.YES);
+		//点击数和回复数
+		Field clickCountField = new IntField("clickCount", this.clickCount, Store.YES);
+		Field replyCountField = new IntField("replyCount", this.replyCount, Store.YES);
+		doc.add(idField);
+		doc.add(titleField);
+		doc.add(digestField);
+		doc.add(dateField);
+		doc.add(replyCountField);
+		doc.add(clickCountField);
+		return doc;
+	}
 	
 	public int getId() {
 		return id;

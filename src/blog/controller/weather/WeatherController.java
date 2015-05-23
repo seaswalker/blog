@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import blog.model.weather.WeatherData;
+import blog.util.PropertyUtil;
 
 /**
  * 气象查询
@@ -34,20 +35,20 @@ public class WeatherController {
 	/**
 	 * 本机所在城市
 	 */
-	private static final String LOCALCITY = "青岛";
+	private static String LOCALCITY = PropertyUtil.getProperty("weather.localcity");
 	/**
 	 * 百度天气地址
 	 */
-	private static final String WEATHER_URL = "http://api.map.baidu.com/telematics/v3/weather?ak=75fb46847fa50e87a07000d1e573a168&output=json&location=";
+	private static String WEATHER_URL = PropertyUtil.getProperty("weather.weather_url");
 	/**
 	 * IP地址查询地址
 	 */
-	private static final String IP_URL = "http://ipapi.sinaapp.com/api.php?f=text&ip=";
+	private static String IP_URL = PropertyUtil.getProperty("weather.ip_url");
 	/**
 	 * 天气预报结果缓存
 	 */
 	private static final ConcurrentHashMap<String, WeatherData> WEATHERCACHE = new ConcurrentHashMap<String, WeatherData>();
-
+	
 	@RequestMapping("/weather")
 	public void query(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String ip = request.getRemoteAddr();

@@ -8,6 +8,10 @@
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 
+	<!-- 配置文件加载 -->
+	<listener>
+		<listener-class>blog.listener.PropertyListener</listener-class>
+	</listener>
 	<!-- 根容器 -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

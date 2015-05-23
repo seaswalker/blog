@@ -1,5 +1,6 @@
 package blog.controller.admin;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import blog.service.CategoryService;
 import blog.service.TagService;
 import blog.util.DataUtil;
 import blog.util.HTMLUtil;
+import blog.util.LucenceUtil;
 import blog.util.StringUtil;
 
 /**
@@ -68,7 +70,7 @@ public class AdminArticleController {
 	 * @param summary 博文摘要，如果为空使用取出html标签后的前32个子
 	 */
 	@RequestMapping("save")
-	public String save(Integer id, String title, String content, String summary, int categoryid, String tags) {
+	public String save(Integer id, String title, String content, String summary, int categoryid, String tags) throws IOException {
 		Article article = new Article();
 		if(id != null) {
 			article.setId(id);
@@ -82,6 +84,15 @@ public class AdminArticleController {
 		article.setTitle(title);
 		DataUtil.convertTags(article, tags, tagService);
 		articleServcie.saveOrUpdate(article);
+		//添加索引
+		if(id == null) {
+			LucenceUtil.addIndex(article);
+		}else {
+			//重建此博文的索引
+			LucenceUtil.updateIndex(article);
+		}
+		//清除缓存
+		LucenceUtil.clearCache();
 		return "redirect:/admin/right.html";
 	}
 	
@@ -105,9 +116,13 @@ public class AdminArticleController {
 	 * 博文删除
 	 */
 	@RequestMapping("delete")
-	public String delete(Integer id) {
+	public String delete(Integer id) throws IOException {
 		if(id != null) {
 			articleServcie.delete(id);
+			//删除索引
+			LucenceUtil.deleteIndex(id);
+			//清除缓存
+			LucenceUtil.clearCache();
 		}
 		return "redirect:list.html";
 	}

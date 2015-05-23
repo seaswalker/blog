@@ -20,6 +20,16 @@
 			getResponseData("ajax/links.html", true, false, links);
 			getResponseData("weather.html", true, false, weather);
 		}
+		//搜索
+		function search() {
+			var content = document.getElementById("search").value;
+			if(content.trim() == "") {
+				alert("请输入搜索内容");
+				return false;
+			}
+			window.open("search.html?search=" + content, "搜索");
+			return true;
+		}
 	</script>
 </head>
 <body>
@@ -27,11 +37,9 @@
        <!--搜索框-->
        <div class="left-search left-border">
            <div class="search">
-           		<form action="index.html" method="post">
-	               <input type="text" name="search" style="width:150px;height:30px;">
-	               &nbsp;
-	               <input type="submit" value="搜索" style="width:50px;height:30px;">
-           		</form>
+               <input type="text" id="search" style="width:150px;height:30px;">
+               &nbsp;
+               <input type="button" value="搜索" onclick="search();" style="width:50px;height:30px;">
            </div>
        </div>
        <!--日历-->
