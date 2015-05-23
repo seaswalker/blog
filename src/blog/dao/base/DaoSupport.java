@@ -55,12 +55,12 @@ public abstract class DaoSupport<T> implements BaseDao<T> {
 	@Override
 	public List<T> findAll() {
 		Query query = getSession().createQuery("from " + clazz.getSimpleName());
-		return query.list();
+		return query.setCacheable(true).list();
 	}
 	
 	@Override
 	public T query(String hql, Object... params) {
-		Query query = getSession().createQuery(hql);
+		Query query = getSession().createQuery(hql).setCacheable(true);
 		for(int i = 0;i < params.length;i ++) {
 			query.setParameter(i, params[i]);
 		}
@@ -71,7 +71,7 @@ public abstract class DaoSupport<T> implements BaseDao<T> {
 	
 	@Override
 	public List<T> batchQuery(String hql, Object... params) {
-		Query query = getSession().createQuery(hql);
+		Query query = getSession().createQuery(hql).setCacheable(true);
 		for(int i = 0;i < params.length;i ++) {
 			query.setParameter(i, params[i]);
 		}
@@ -80,7 +80,7 @@ public abstract class DaoSupport<T> implements BaseDao<T> {
 	
 	@Override
 	public Object batchNativeQuery(String sql, Object... params) {
-		Query query = getSession().createSQLQuery(sql);
+		Query query = getSession().createSQLQuery(sql).setCacheable(true);
 		for(int i = 0;i < params.length;i ++) {
 			query.setParameter(i, params[i]);
 		}
@@ -90,6 +90,7 @@ public abstract class DaoSupport<T> implements BaseDao<T> {
 	@Override
 	public Object nativeQuery(String sql, Object... params) {
 		SQLQuery sqlQuery = getSession().createSQLQuery(sql);
+		sqlQuery.setCacheable(true);
 		for(int i = 0;i < params.length;i ++) {
 			sqlQuery.setParameter(i, params[i]);
 		}
@@ -126,6 +127,7 @@ public abstract class DaoSupport<T> implements BaseDao<T> {
 			sql += sb.toString();
 		}
 		SQLQuery query = getSession().createSQLQuery(sql);
+		query.setCacheable(true);
 		//设置自动封装
 		query.addEntity(clazz);
 		SQLQuery countQuery = getSession().createSQLQuery(countSql);

@@ -4,6 +4,7 @@
 	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="blog.model.Link" table="LINK">
+    	<cache usage="read-only"/>
         <id name="id" type="int">
             <column name="ID" />
             <generator class="native" />

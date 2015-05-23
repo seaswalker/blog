@@ -4,6 +4,8 @@
 	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="blog.model.Article" table="ARTICLE">
+    	<!-- 使用二级缓存 -->
+    	<cache usage="read-only"/>
         <id name="id" type="int">
             <column name="ID" />
             <generator class="native" />
