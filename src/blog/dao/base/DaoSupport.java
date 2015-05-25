@@ -80,7 +80,7 @@ public abstract class DaoSupport<T> implements BaseDao<T> {
 	
 	@Override
 	public Object batchNativeQuery(String sql, Object... params) {
-		Query query = getSession().createSQLQuery(sql).setCacheable(true);
+		Query query = getSession().createSQLQuery(sql);
 		for(int i = 0;i < params.length;i ++) {
 			query.setParameter(i, params[i]);
 		}

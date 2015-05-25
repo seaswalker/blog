@@ -1,5 +1,10 @@
 package blog.util;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
@@ -66,6 +71,21 @@ public class DataUtil {
 			//设置回显字符串
 			article.tagsStr();
 		}
+	}
+	
+	/**
+	 * 从文件读取
+	 * @param path 文件路径
+	 */
+	public static String readFormFile(String path) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(path)), "UTF-8"));
+		StringBuilder sb = new StringBuilder();
+		String line = null;
+		while((line = br.readLine()) != null) {
+			sb.append(line).append("\r\n");
+		}
+		br.close();
+		return sb.toString();
 	}
 	
 }
