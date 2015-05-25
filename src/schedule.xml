@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+       
+       <!-- 任务明细bean -->
+       <bean id="jobDetailBean" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+       		<property name="jobClass" value="blog.quartz.LucenceJob"></property>
+       </bean>
+       
+       <bean id = "cronTriggerBean" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+       		<property name="jobDetail" ref="jobDetailBean" />
+			<property name="cronExpression">
+				<!-- 每天零点触发 -->
+				<value>0 0 0 * * ?</value>
+			</property>
+       </bean>
+       
+       <!-- 调度工厂bean,激活触发器运行 -->
+		<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+			<property name="triggers">
+				<list>
+					<ref bean="cronTriggerBean"/>
+				</list>
+			</property>
+		</bean>
+        
+</beans>

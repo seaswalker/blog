@@ -168,6 +168,8 @@ public class LucenceUtil {
 		indexWriter.close();
 		System.out.println("共对 " + articles.size() + "条博文建立索引");
 		context.close();
+		//更新搜索器
+		generateIndexSearcher();
 	}
 	
 	/**

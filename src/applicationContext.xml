@@ -18,6 +18,9 @@
     <!-- 从配置文件读取数据 -->
     <context:property-placeholder location="classpath:jdbc.properties"/>
     
+    <!-- 引入石英调度 -->
+    <import resource="schedule.xml"/>
+    
     <!-- 配置数据源 -->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource " destroy-method="close">
 	    <property name="driverClass" value="${jdbc.driverClassName}"/>
