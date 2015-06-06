@@ -127,7 +127,7 @@
     //表单提交
     function submitForm() {
         //获取第二个表单，第一个是搜索
-        var form = document.forms[1];
+        var form = document.getElementById("reply_form");
         if(check(form)) {
             //ajax提交评论
             var url = "reply/save.html";

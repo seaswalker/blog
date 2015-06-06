@@ -103,7 +103,7 @@
                     </div>
                     <!--回复表单-->
                     <div class="reply-form">
-                        <form action="" method="post">
+                        <form action="" method="post" id="reply_form">
                         	<!-- 提交博文id -->
                         	<input type="hidden" name="aid" value="${article.id}" id="aid">
                         	<!-- 防止js代码出错，无实际意义 -->
